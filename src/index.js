@@ -1,6 +1,6 @@
 import fs from 'fs';
-import compare from './compare.js';
 import path from 'node:path';
+import compare from './compare.js';
 
 const getFilePath = (filepath) => path.resolve(process.cwd(), filepath);
 const getData = (filepath) => JSON.parse(fs.readFileSync(filepath, 'utf-8'));
