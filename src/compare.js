@@ -11,7 +11,7 @@ const compare = (data1, data2) => {
     } else if (!_.has(data2, key)) {
       acc.push(`  - ${key}: ${data1[key]}\n`);
     } else if (data1[key] !== data2[key]) {
-      acc.push(`  - ${key}: ${data1[key]} \n  + ${key}: ${data2[key]}\n`);
+      acc.push(`  - ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}\n`);
     } else {
       acc.push(`    ${key}: ${data1[key]}\n`);
     }
