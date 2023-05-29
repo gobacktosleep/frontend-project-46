@@ -5,19 +5,24 @@ const compare = (data1, data2) => {
   const keys2 = _.keys(data2);
   const sortedAllKeys = _.sortBy(_.union(keys1, keys2));
 
-  const result = sortedAllKeys.reduce((acc, key) => {
+  const result = sortedAllKeys.map((key) => {
     if (!_.has(data1, key)) {
-      acc.push(`  + ${key}: ${data2[key]}\n`);
-    } else if (!_.has(data2, key)) {
-      acc.push(`  - ${key}: ${data1[key]}\n`);
-    } else if (data1[key] !== data2[key]) {
-      acc.push(`  - ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}\n`);
-    } else {
-      acc.push(`    ${key}: ${data1[key]}\n`);
+      return { type: 'added', key, value: data2[key] };
     }
-    return acc;
-  }, []);
-  return `{\n${result.join('')}}`;
+    if (!_.has(data2, key)) {
+      return { type: 'deleted', key, value: data1[key] };
+    }
+    if (_.isEqual(data1[key], data2[key])) {
+      return { type: 'unchanged', key, value: data1[key] };
+    }
+    if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
+      return { type: 'nested', key, children: compare(data1[key], data2[key]) };
+    }
+    return {
+      type: 'changed', key, value1: data1[key], value2: data2[key],
+    };
+  });
+  return result;
 };
 
 export default compare;
