@@ -5,7 +5,7 @@ const compare = (data1, data2) => {
   const keys2 = _.keys(data2);
   const sortedAllKeys = _.sortBy(_.union(keys1, keys2));
 
-  const result = sortedAllKeys.map((key) => {
+  return sortedAllKeys.map((key) => {
     if (!_.has(data1, key)) {
       return { type: 'added', key, value: data2[key] };
     }
@@ -22,7 +22,6 @@ const compare = (data1, data2) => {
       type: 'changed', key, value1: data1[key], value2: data2[key],
     };
   });
-  return result;
 };
 
 export default compare;
