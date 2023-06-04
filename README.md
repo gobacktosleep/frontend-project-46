@@ -9,8 +9,6 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/15e766bc88c9216813f4/test_coverage)](https://codeclimate.com/github/gobacktosleep/frontend-project-46/test_coverage)
 
-[![asciicast](https://asciinema.org/a/siUGnpt7AQdbgkUwzhWgMoupY.svg)](https://asciinema.org/a/siUGnpt7AQdbgkUwzhWgMoupY)
-
 ## Description:
 "Gendiff" is a program that compares two data structures and shows the difference between them.
 - Utility supports two different input formats: `yaml` & `json`
