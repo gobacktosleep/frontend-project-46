@@ -11,6 +11,7 @@ const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8'
 
 const expectedResult = readFile('expected_file.txt');
 const expectedPlain = readFile('expected_plain.txt');
+const expectedJSON = readFile('expected_json.txt');
 
 const cases = [
   ['file1.json', 'file2.json', 'stylish', expectedResult],
@@ -21,6 +22,7 @@ const cases = [
   ['file1.json', 'file2.json', 'plain', expectedPlain],
   ['file1.json', 'file2.yaml', 'plain', expectedPlain],
   ['file1.yml', 'file2.json', 'plain', expectedPlain],
+  ['file1.yml', 'file2.json', 'json', expectedJSON],
 ];
 
 describe.each(cases)('Gendiff tests', (case1, case2, format, expectedFile) => {
