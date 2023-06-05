@@ -14,6 +14,11 @@
 - Utility supports two different input formats: `yaml` & `json`
 - Generates output data in `plain text`, `stylish`, `json` formats.
 
+## System requirements:
+```
+Node.js >= 16.x
+```
+
 ## Installation:
 - Clone this repository on your computer.
 - Go to the directory where you downloaded it: `$ cd directory-name`
